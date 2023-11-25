@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+//应用的根组件
+import React from "react";
+import { BrowserRouter, Route, Routes,  Switch} from "react-router-dom";
+import Home from './pages/home'
+import Login from './pages/login'
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  state = {  }
+  render() { 
+    return ( 
+      // <Home/>
+      // <Login/>
+    <BrowserRouter>
+
+    <Switch>
+      <Route path="/" component={Login}></Route>
+      <Route path="/home" component={Home}></Route>
+    </Switch>
+    
+    </BrowserRouter>
+     );
+  }
 }
-
+ 
 export default App;
+
