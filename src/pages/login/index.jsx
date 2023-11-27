@@ -1,67 +1,46 @@
-import React from "react";
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import {withRouter} from "react-router-dom";
-import { Button, Checkbox, Form, Input } from 'antd';
-import './index.less'
+// src/pages/Login.js
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Form, Input, Button, message } from 'antd';
 
-class Login extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    state = {}
-    onFinish = () => {
-        this.login()
-    }
-    login = () => {
-        // e.preventDefault()
-        // console.log(this.props, '00')
-        this.props.history.push('/home')
-    }
-    render() {
-        return (
-            <div className='login'>
-                <header className='header'>
-                    header
-                </header>
-                <section className='content'>
-                    <h1>用户登录</h1>
-                    <div className="form">
-                        {/* <Form
-                            name="normal_login"
-                            className="login-form"
-                            initialValues={{ remember: true }}
-                            onFinish={this.onFinish}
-                        >
-                            <Form.Item
-                                name="username"
-                                rules={[{ required: true, message: 'Please input your Username!' }]}
-                            >
-                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-                            </Form.Item>
-                            <Form.Item
-                                name="password"
-                                rules={[{ required: true, message: 'Please input your Password!' }]}
-                            >
-                                <Input
-                                    prefix={<LockOutlined className="site-form-item-icon" />}
-                                    type="password"
-                                    placeholder="Password"
-                                />
-                            </Form.Item>
+const Login = () => {
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
-                            <Form.Item>
-                                {/* <Button type="primary" onClick={this.login} className="login-button">登陆</Button> 
-                            </Form.Item>
-                        </Form>*/}
+  const onFinish = (values) => {
+    setLoading(true);
 
-                        <Button type="primary" onClick={(e)=>this.login(e)} className="login-button">登陆</Button>
-                        <p onClick={this.login.bind(this)}>登陆</p>
-                    </div>
 
-                </section>
-            </div>
-        );
-    }
-}
+    // 模拟登录成功
+    setTimeout(() => {
+      setLoading(false);
+      message.success('登录成功');
+      // 跳转到首页
+      history.push('/');
+    }, 1000);
+  };
 
-export default withRouter(Login);
+  return (
+    <div style={{ width: 300, margin: 'auto', marginTop: 100 }}>
+      <Form onFinish={onFinish}>
+        <Form.Item
+          name="username"
+        >
+          <Input placeholder="用户名" />
+        </Form.Item>
+        <Form.Item
+          name="password"
+        >
+          <Input.Password placeholder="密码" />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit" loading={loading} block>
+            登录
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
+  );
+};
+
+export default Login;

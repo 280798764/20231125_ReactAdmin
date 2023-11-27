@@ -1,32 +1,18 @@
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import Login from './pages/Login';
+import Layout from './Layout'
 
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/login" exact component={Login} />
+        <Route path="/" component={Layout} />
+      </Switch>
+    </Router>
+  );
+};
 
-//应用的根组件
-import React from "react";
-import { BrowserRouter, Route, Routes,  Switch} from "react-router-dom";
-import Home from './pages/home'
-import Login from './pages/login'
-import Table from './pages/table'
-import Echarts from './pages/echarts'
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  state = {  }
-  render() { 
-    return ( 
-      // <Home/>
-      // <Login/>
-    <BrowserRouter>
-
-    <Switch>
-      <Route path="/" exact component={Login}></Route>
-      <Route path="/home" component={Home}></Route>
-    </Switch>
-    
-    </BrowserRouter>
-     );
-  }
-}
- 
 export default App;
-

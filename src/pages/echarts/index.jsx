@@ -1,15 +1,11 @@
+import React from 'react';
 
-import React from "react";
-class Echarts extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    state = {  }
-    render() { 
-        return ( 
-            <div>ehcart</div>
-         );
-    }
-}
- 
+const Echarts = () => {
+  return (
+    <div>
+      <h2>Echarts Page</h2>
+    </div>
+  );
+};
+
 export default Echarts;
