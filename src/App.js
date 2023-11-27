@@ -5,6 +5,8 @@ import React from "react";
 import { BrowserRouter, Route, Routes,  Switch} from "react-router-dom";
 import Home from './pages/home'
 import Login from './pages/login'
+import Table from './pages/table'
+import Echarts from './pages/echarts'
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class App extends React.Component {
     <BrowserRouter>
 
     <Switch>
-      <Route path="/" component={Login}></Route>
+      <Route path="/" exact component={Login}></Route>
       <Route path="/home" component={Home}></Route>
     </Switch>
     
